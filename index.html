@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davy Muhoza - Communication Specialist Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: drift 20s linear infinite;
+        }
+
+        @keyframes drift {
+            from { transform: translate(0, 0); }
+            to { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.85;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #667eea;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .highlight-box h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -3.75rem;
+            top: 2rem;
+            width: 15px;
+            height: 15px;
+            background: #667eea;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .experience-item h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            margin-left: 1.5rem;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: #f8fafc;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-content h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #667eea;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item-icon {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+
+        .contact-form {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        footer {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .experience-timeline {
+                padding-left: 2rem;
+            }
+
+            .experience-item::before {
+                left: -2.75rem;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Davy Muhoza</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#portfolio">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Davy Muhoza</h1>
+            <div class="subtitle">Communication Specialist & Creative Director</div>
+            <p>Crafting compelling narratives and strategic visual content for international organizations across Africa. 7+ years of experience in multimedia storytelling, brand development, and multi-channel campaigns.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="cta-button">Get In Touch</a>
+                <a href="#portfolio" class="cta-button secondary">View My Work</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a results-driven Communication Specialist with over 7 years of experience in strategic communications, multimedia content creation, and brand management. My passion lies in developing communication strategies that resonate across cultures and create meaningful impact.</p>
+                
+                <p>Throughout my career, I've had the privilege of working with international organizations, NGOs, diplomatic missions, and financial institutions across Africa. From creating compelling visual narratives for healthcare campaigns to managing communication strategies for regional development projects, I bring a unique blend of creative vision and strategic thinking to every project.</p>
+
+                <p>My expertise spans the complete spectrum of communication and creative services—from concept development and brand strategy to execution through multimedia content, motion graphics, and digital storytelling. I thrive in multicultural environments and have successfully delivered projects across Tanzania, Kenya, Burundi, Rwanda, Nigeria, Zambia, and Côte d'Ivoire.</p>
+            </div>
+            <div class="highlight-box">
+                <h3>Professional Highlights</h3>
+                <p><strong>📍 Location:</strong> Arusha, Tanzania</p>
+                <p><strong>🎓 Education:</strong> B.A. in Organizational Communication</p>
+                <p><strong>💼 Experience:</strong> 7+ years in strategic communications</p>
+                <p><strong>🌍 Regional Expertise:</strong> East & Central Africa</p>
+                <p><strong>🗣️ Languages:</strong> English, French, Kirundi (Native)</p>
+                <p><strong>🎨 Specialization:</strong> Multimedia content creation, brand development, Adobe Creative Suite mastery</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Core Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">🎨</div>
+                <h3>Brand Development & Visual Identity</h3>
+                <p>Creating comprehensive branding solutions and visual identity systems for organizations across sectors</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🎬</div>
+                <h3>Multimedia Production</h3>
+                <p>Expert in video editing, animation, motion graphics, and digital storytelling using Adobe Creative Suite</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">📱</div>
+                <h3>Digital Communication Strategy</h3>
+                <p>Developing and executing multi-channel campaigns across social media and digital platforms</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">💡</div>
+                <h3>Creative Direction</h3>
+                <p>Leading creative teams and campaigns for international clients and development organizations</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">👥</div>
+                <h3>Stakeholder Engagement</h3>
+                <p>Building relationships and managing communications for diverse audiences across Africa</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <h3>Campaign Management</h3>
+                <p>Strategic planning and execution of communication campaigns with measurable impact</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Professional Experience</h2>
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <h3>Creative Director</h3>
+                <div class="experience-meta">Etsitso Agency | October 2022 - May 2025</div>
+                <ul>
+                    <li>Led creative direction and brand development for regional and international clients including US Embassy, CRDB Bank, Finbank, and Umuco Bank</li>
+                    <li>Developed comprehensive branding materials for the Annual First Lady Event "Forum de femmes leader" (October 2024)</li>
+                    <li>Executed strategic communication projects for government, financial, and diplomatic organizations</li>
+                    <li>Managed multimedia content creation and campaign implementation across multiple sectors</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Creative Leader</h3>
+                <div class="experience-meta">Newbridge Connect | 2021 - Present | Nairobi, Kenya</div>
+                <ul>
+                    <li>Lead creative department operations including graphic design, video editing, and content localization</li>
+                    <li>Collaborate with international teams on AstraZeneca's healthcare communication campaigns across Africa (Côte d'Ivoire, Tanzania, Rwanda, Nigeria, Zambia)</li>
+                    <li>Manage social media platforms with focus on creative strategy and audience engagement</li>
+                    <li>Provide editorial support through document proofreading and content quality assurance</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Communication Assistant</h3>
+                <div class="experience-meta">Impunity Watch Burundi - "Ejo Nahacu" Program | February 2023</div>
+                <ul>
+                    <li>Developed mass communication strategy for UN Peacebuilding Fund-supported transitional justice project</li>
+                    <li>Created program branding materials including logo design, banners, and promotional materials</li>
+                    <li>Supported communication campaigns across six provinces promoting community dialogues and memory initiatives</li>
+                    <li>Developed multi-level communication strategies targeting community members, policy-makers, and international stakeholders</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Account Manager & Communication Manager</h3>
+                <div class="experience-meta">Do Creative | 2020 - 2022</div>
+                <ul>
+                    <li>Managed client accounts and relationships while overseeing communication strategies for corporate portfolio</li>
+                    <li>Developed and executed comprehensive social media campaigns for corporate clients</li>
+                    <li>Provided event coverage services including photography and videography</li>
+                    <li>Developed creative materials for CRDB Bank's 10-year anniversary campaign</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Independent Communications Consultant</h3>
+                <div class="experience-meta">NACHAM Africa | 2019 - Present</div>
+                <ul>
+                    <li>Provide strategic communication advisory for non-profit focused on health and hope for vulnerable communities</li>
+                    <li>Develop communication materials for holistic programs integrating Nutrition, Psychosocial Support, and Socio-Economic Reintegration</li>
+                    <li>Create impact communication content for community-based health initiatives in Burundi and across Africa</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2>Featured Work</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-image">🎯</div>
+                <div class="portfolio-content">
+                    <h3>First Lady Forum Branding</h3>
+                    <p>Comprehensive branding and communication materials for "Forum de femmes leader" - Annual First Lady Event (October 2024)</p>
+                    <div>
+                        <span class="portfolio-tag">Brand Development</span>
+                        <span class="portfolio-tag">Event Communication</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">💊</div>
+                <div class="portfolio-content">
+                    <h3>AstraZeneca Africa Healthcare Campaigns</h3>
+                    <p>Led creative direction for healthcare communication campaigns across 5 African countries, including content localization and multimedia production</p>
+                    <div>
+                        <span class="portfolio-tag">Healthcare Communication</span>
+                        <span class="portfolio-tag">Multimedia</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">🏦</div>
+                <div class="portfolio-content">
+                    <h3>Financial Sector Campaigns</h3>
+                    <p>Strategic communication and branding projects for CRDB Bank, Finbank, and Umuco Bank, including anniversary campaigns and digital content</p>
+                    <div>
+                        <span class="portfolio-tag">Corporate Communication</span>
+                        <span class="portfolio-tag">Brand Strategy</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">🕊️</div>
+                <div class="portfolio-content">
+                    <h3>Transitional Justice Program</h3>
+                    <p>Complete branding and communication strategy for UN Peacebuilding Fund project promoting community dialogue across 6 provinces in Burundi</p>
+                    <div>
+                        <span class="portfolio-tag">Social Impact</span>
+                        <span class="portfolio-tag">Community Engagement</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">🌍</div>
+                <div class="portfolio-content">
+                    <h3>US Embassy Communication Projects</h3>
+                    <p>Strategic communication and creative campaigns for diplomatic initiatives and public engagement programs</p>
+                    <div>
+                        <span class="portfolio-tag">Diplomatic Communication</span>
+                        <span class="portfolio-tag">Public Affairs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">❤️</div>
+                <div class="portfolio-content">
+                    <h3>NACHAM Africa Health Initiatives</h3>
+                    <p>Ongoing communication support for community-based health programs integrating nutrition, psychosocial support, and economic reintegration</p>
+                    <div>
+                        <span class="portfolio-tag">Health Communication</span>
+                        <span class="portfolio-tag">NGO Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Let's Work Together</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p style="margin-bottom: 2rem;">I'm always open to discussing new projects, creative opportunities, or partnerships. Whether you need strategic communication support, multimedia content creation, or brand development—let's connect!</p>
+                
+                <div class="contact-item">
+                    <div class="contact-item-icon">📧</div>
+                    <div>
+                        <strong>Email</strong><br>
+                        davymuhoza@gmail.com
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <div>
+                        <strong>Location</strong><br>
+                        Arusha, Tanzania
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-item-icon">🌍</div>
+                    <div>
+                        <strong>Working Across</strong><br>
+                        East & Central Africa
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Davy Muhoza. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8;">Communication Specialist | Creative Director | Multimedia Storyteller</p>
+            <div class="social-links">
+                <a href="mailto:davymuhoza@gmail.com" title="Email">✉️ Email</a>
+                <a href="#" title="LinkedIn">💼 LinkedIn</a>
+                <a href="#" title="Portfolio">🎨 Portfolio</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            this.reset();
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 15px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Add scroll animation to elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe skill cards and portfolio items
+        document.querySelectorAll('.skill-card, .portfolio-item, .experience-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
